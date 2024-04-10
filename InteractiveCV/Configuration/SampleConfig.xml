@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<z:CVScript xmlns:z="http://tempuri.org/CVFunctionsSchema.xsd">
+  <CVFunction>
+    <LoadImage>
+      <FilePath>../../Images/lena.jpg</FilePath>
+      <ImreadMode>Grayscale</ImreadMode>
+    </LoadImage>
+  </CVFunction>
+  <CVFunction>
+    <BlobDetection>
+      <MinArea>100</MinArea>
+      <MaxArea>1000</MaxArea>
+      <MinCircularity>0.8</MinCircularity>
+      <MaxCircularity>1.0</MaxCircularity>
+      <MinConvexity>0.8</MinConvexity>
+      <MaxConvexity>1.0</MaxConvexity>
+      <MinInertiaRatio>0.8</MinInertiaRatio>
+      <MaxInertiaRatio>1.0</MaxInertiaRatio>
+      <MinThreshold>100</MinThreshold>
+      <MaxThreshold>255</MaxThreshold>
+      <MinDistBetweenBlobs>10</MinDistBetweenBlobs>
+      <FilterByColor>true</FilterByColor>
+      <BlobColor>0</BlobColor>
+    </BlobDetection>
+  </CVFunction>
+  
+</z:CVScript>

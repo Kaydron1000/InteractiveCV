@@ -1,0 +1,46 @@
+﻿<UserControl x:Class="InteractiveCV.Views.MainView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:InteractiveCV.Views"
+             xmlns:vm="clr-namespace:InteractiveCV.ViewModels"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Border Grid.Column="0" Grid.Row="0" BorderBrush="Aqua" BorderThickness="2">
+            <StackPanel>
+                <Button x:Name="Button_LoadImg" Content="Load Img" Click="Button_LoadImg_Click" />
+                <Button x:Name="Button_ColorTranslation" Content="Color Translation" Click="Button_ColorTranslation_Click"/>
+                <Button x:Name="Button_Threshold" Content="Threshold" Click="Button_Threshold_Click"/>
+                <Button x:Name="Button_BlobDetection" Content="Blob Detection" Click="Button_BlobDetection_Click"/>
+            </StackPanel>
+        </Border>
+        <ContentControl x:Name="CVFunctionView" Grid.Column="0" Grid.Row="1" Grid.RowSpan="2" BorderBrush="Aqua" BorderThickness="6"/>
+        
+        <GridSplitter Grid.Column="0" Grid.RowSpan="3" Width="4"/>
+        <local:ImageViewer Grid.Row="0" Grid.Column="1" Grid.RowSpan="2" Grid.ColumnSpan="1">
+            <local:ImageViewer.DataContext>
+                <vm:ImageViewerViewModel/>
+            </local:ImageViewer.DataContext>
+        </local:ImageViewer>
+        <GridSplitter Grid.Column="1" Grid.RowSpan="2" Grid.ColumnSpan="1" HorizontalAlignment="Right" VerticalAlignment="Stretch" Width="4"/>
+        <local:ContourList Grid.Row="0" Grid.Column="2" Grid.RowSpan="2" Grid.ColumnSpan="1">
+        </local:ContourList>
+
+        <local:TranslationsScriptView Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2">
+
+        </local:TranslationsScriptView>
+        <GridSplitter Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="4"/>
+    </Grid>
+</UserControl>
