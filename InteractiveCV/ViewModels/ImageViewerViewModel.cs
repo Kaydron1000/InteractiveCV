@@ -28,13 +28,13 @@ namespace InteractiveCV.ViewModels
             get { return _myModel; }
             set { SetField(ref _myModel, value); }
         }
-        public ImageManager ImageSource
+        public MyModel ImageSource
         {
             get 
             {
                 if (_myModel.OrderedImgs != null && _myModel.OrderedImgs.Count >0)
                 {
-                    return _myModel.OrderedImgs.Last();
+                    return _myModel;
                 }
                 return null;
             }

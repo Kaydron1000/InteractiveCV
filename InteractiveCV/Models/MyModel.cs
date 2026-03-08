@@ -13,7 +13,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace InteractiveCV.Models
 {
-    public class NewModel : INotifyPropertyChanged
+    public class MyModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -26,7 +26,7 @@ namespace InteractiveCV.Models
         }
 
 
-        public NewModel()
+        public MyModel()
         {
             OrderedImgs = new ObservableCollection<ICVFunction>();
         }
@@ -45,39 +45,39 @@ namespace InteractiveCV.Models
             return true;
         }
     }
-    //public class ImageManager : INotifyPropertyChanged
-    //{
-    //    public event PropertyChangedEventHandler PropertyChanged;
-    //    private BitmapSource _image;
-    //    private Mat _cvImage;
+    public class ImageManager : INotifyPropertyChanged
+    {
+        public event PropertyChangedEventHandler PropertyChanged;
+        private BitmapSource _image;
+        private Mat _cvImage;
 
-    //    public BitmapSource Image
-    //    {             
-    //        get { return _image; }
-    //        set 
-    //        { 
-    //            _image = value;
-    //            _cvImage = _image.ToMat();
-    //            OnPropertyChanged(nameof(Image));
-    //            OnPropertyChanged(nameof(CvImage));
-    //        }
-    //    }
-    //    public Mat CvImage
-    //    {
-    //        get { return _cvImage; }
-    //        set 
-    //        { 
-    //            _cvImage = value;
-    //            _image = _cvImage.ToBitmapSource();
-    //            OnPropertyChanged(nameof(Image));
-    //            OnPropertyChanged(nameof(CvImage));
-    //        }
-    //    }
+        public BitmapSource Image
+        {
+            get { return _image; }
+            set
+            {
+                _image = value;
+                _cvImage = _image.ToMat();
+                OnPropertyChanged(nameof(Image));
+                OnPropertyChanged(nameof(CvImage));
+            }
+        }
+        public Mat CvImage
+        {
+            get { return _cvImage; }
+            set
+            {
+                _cvImage = value;
+                _image = _cvImage.ToBitmapSource();
+                OnPropertyChanged(nameof(Image));
+                OnPropertyChanged(nameof(CvImage));
+            }
+        }
 
-    //    protected virtual void OnPropertyChanged(string propertyName)
-    //    {
-    //        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    //    }
+        protected virtual void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
 
-    //}
+    }
 }

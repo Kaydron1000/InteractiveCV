@@ -21,7 +21,8 @@ namespace InteractiveCV.ViewModels
         private string _imageFilePath;
         private ObservableCollection<string> _imageReadModes;
         private string _selectedImageReadMode;
-        private NewModel _myModel;
+        private Mat img;
+        private MyModel _myModel;
 
         public ObservableCollection<string> ImageReadModes
         {
@@ -35,7 +36,7 @@ namespace InteractiveCV.ViewModels
         }
 
 
-        public NewModel Model
+        public MyModel Model
         {
             get { return _myModel; }
             set { SetField(ref _myModel, value); }
@@ -52,7 +53,7 @@ namespace InteractiveCV.ViewModels
 
         public LoadImageViewModel()
         {
-            Model = (NewModel)App.Current.MainWindow.DataContext;
+            Model = (MyModel)App.Current.MainWindow.DataContext;
             ImageReadModes = new ObservableCollection<string>(Enum.GetNames(typeof(ImreadModes)));
             BrowseCommand = new RelayCommand(Browse);
             CancelCommand = new RelayCommand(Cancel);
@@ -81,8 +82,8 @@ namespace InteractiveCV.ViewModels
                 try
                 {
                     ImreadModes readmode = (ImreadModes)Enum.Parse(typeof(ImreadModes), SelectedImageReadMode, true);
-                    _imageManger.CvImage = Cv2.ImRead(ImageFilePath, readmode);
-                    Image = _imageManger.Image;
+                    img = Cv2.ImRead(ImageFilePath, readmode);
+                    
                 }
                 catch (Exception ex)
                 {
